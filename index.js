@@ -4,8 +4,8 @@ const branch = ref(db, "/messages");
 
 let userName = prompt("Please enter your name");
 
-
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
 
 function makeId() {
     let ID = "";
@@ -15,7 +15,17 @@ function makeId() {
     return ID;
 }
 
-const ID = makeId();
+let ID = "";
+
+if(window.localStorage.getItem("ID") != null)
+{
+    ID = window.localStorage.getItem("ID");
+}
+else{
+    ID = makeId();
+    window.localStorage.setItem("ID", ID);
+}
+
 
 document.querySelector("#message").addEventListener('submit', function (e){
     e.preventDefault();
