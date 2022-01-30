@@ -33,7 +33,7 @@ onValue(branch, function(snapshot){
 
         if(message[1].sentBy != userName)
         {
-            div.classList("from-opponent");
+            div.classList.add("from-opponent");
         }
 
         
