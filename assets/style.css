@@ -1,30 +1,45 @@
 #chat{
+    width: 20vw;
+    height: 65vh;
     border: 1px solid red;
-    height: 200px;
-    padding: 10px 20px;
     overflow: auto;
 }
 
 #message-text{
-    margin-top: 10px;
-    padding: 10px;
-    width: 100vw;
+    width: 70%;
 }
 
-.message-container{
+.from-me{
+    margin-top: 10px;
+    margin-left: auto;
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 1px 2px;
     display: flex;
 }
 
-.message-container button{
-    padding: 0 10px;
-    margin-right: 10px;
+.from-opponent{
     margin-top: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 1px 2px;   
+    display: flex;
+    align-items: center;
 }
 
-.from-opponent{
-    margin-right: auto;
+.message-from-me{
+    margin: auto 0;
 }
 
 .del-for-guest{
     display: none;
+}
+
+button{
+    padding: 0 20px;
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
 }

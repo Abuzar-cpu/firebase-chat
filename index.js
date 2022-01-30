@@ -2,7 +2,12 @@ import { set, ref, onValue, push, db, remove } from "./firebase.js";
 
 const branch = ref(db, "/messages");
 
-let userName = prompt("Please enter your name");
+let userName = "";
+
+while (userName == "")
+{
+    userName = prompt("Please enter your name");
+}
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -44,6 +49,10 @@ onValue(branch, function(snapshot){
     
     $("#chat").html("")
 
+    if(snapshot.val() == null)
+    {
+        return;
+    }
     for(let message of Object.entries(snapshot.val()))
     {
         let div = document.createElement("div");
@@ -62,10 +71,14 @@ onValue(branch, function(snapshot){
             div.classList.add("from-opponent");
         }
 
+        else{
+            div.classList.add("from-me");
+        }
         let p = document.createElement("p");
         let m = message[1].sentBy + ": " + message[1].message
         // console.log(m);
         p.innerText = m;
+        p.classList.add("message-from-me");
         
         div.append(del, p);
 
