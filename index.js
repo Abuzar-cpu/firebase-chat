@@ -4,6 +4,19 @@ const branch = ref(db, "/messages");
 
 let userName = prompt("Please enter your name");
 
+
+const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+function makeId() {
+    let ID = "";
+    for ( var i = 0; i < 12; i++ ) {
+      ID += characters.charAt(Math.floor(Math.random() * 36));
+    }
+    return ID;
+}
+
+const ID = makeId();
+
 document.querySelector("#message").addEventListener('submit', function (e){
     e.preventDefault();
 
@@ -11,16 +24,11 @@ document.querySelector("#message").addEventListener('submit', function (e){
     let message = document.querySelector("input").value;
     set(messagePush, {
         message,
-        sentBy: userName
+        sentBy: userName,
+        userId: ID
     });
 });
 
-
-
-function deleteMessage (key)
-{
-    
-}
 
 onValue(branch, function(snapshot){
     
@@ -38,7 +46,7 @@ onValue(branch, function(snapshot){
             remove(ref(db, "/messages/" + message[0]));
         });
 
-        if(message[1].sentBy != userName)
+        if(message[1].userId != ID)
         {
             del.classList.add("del-for-guest")
             div.classList.add("from-opponent");
@@ -54,4 +62,6 @@ onValue(branch, function(snapshot){
         document.querySelector("#chat").append(div);
         document.querySelector("#message-text").value = ""; 
     }
+
+    document.getElementById("chat").scroll(0, document.getElementById("chat").scrollHeight);
 });
