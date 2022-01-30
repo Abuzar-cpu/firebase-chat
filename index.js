@@ -31,18 +31,18 @@ onValue(branch, function(snapshot){
         let div = document.createElement("div");
         div.classList.add("message-container");
 
-        if(message[1].sentBy != userName)
-        {
-            div.classList.add("from-opponent");
-        }
-
-        
         let del = document.createElement("button");
         del.innerText = "Del";
         $(del).on("click", () =>
         {
             remove(ref(db, "/messages/" + message[0]));
         });
+
+        if(message[1].sentBy != userName)
+        {
+            del.classList.add("del-for-guest")
+            div.classList.add("from-opponent");
+        }
 
         let p = document.createElement("p");
         let m = message[1].sentBy + ": " + message[1].message

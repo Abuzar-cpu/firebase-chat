@@ -2,6 +2,7 @@
     border: 1px solid red;
     height: 200px;
     padding: 10px 20px;
+    overflow: auto;
 }
 
 #message-text{
@@ -21,5 +22,9 @@
 }
 
 .from-opponent{
-    float: right;
+    margin-right: auto;
+}
+
+.del-for-guest{
+    display: none;
 }
