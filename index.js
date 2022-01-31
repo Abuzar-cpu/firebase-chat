@@ -4,9 +4,18 @@ const branch = ref(db, "/messages");
 
 let userName = "";
 
-while (userName == "")
+if(window.localStorage.getItem("userName") != null)
 {
-    userName = prompt("Please enter your name");
+    userName = window.localStorage.getItem("userName");
+}
+else{
+    
+    while (userName == "")
+    {
+        userName = prompt("Please enter your name");
+    }
+
+    window.localStorage.setItem("userName", userName);
 }
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

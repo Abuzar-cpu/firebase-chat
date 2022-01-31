@@ -1,5 +1,5 @@
 #chat{
-    width: 20vw;
+    /* width: 20vw; */
     height: 65vh;
     border: 1px solid red;
     overflow: auto;
