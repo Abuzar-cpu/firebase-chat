@@ -11,6 +11,7 @@ if(window.localStorage.getItem("userName") != null)
 else{
     
     while (userName == "")
+    // while (str.replace(/\s/g, '').length == 0)
     {
         userName = prompt("Please enter your name");
     }
